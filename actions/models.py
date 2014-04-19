@@ -11,8 +11,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
-# Local imports
-
+# Import local libs
+from signals import action
 
 # Setup logger
 log = logging.getLogger(__name__)
@@ -63,8 +63,9 @@ class ActionModelManager(models.Manager):
     """
     def new_action(self, source, target, verb_string):
         verb = VerbModel.objects.resolve_verb_string(verb_string)
-        action = None # TODO stub
-        action_created.send(action, source=source, target=target, verb=verb)
+        #action = None # TODO stub
+        action.send(sender=self, source=source, target=target, verb=verb)
+
 
 
 class ActionModel(models.Model):
