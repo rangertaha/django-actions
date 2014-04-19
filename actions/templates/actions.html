@@ -1,0 +1,23 @@
+{% load actions_tag %}
+
+{% block content %}
+    <h1>Example Output</h1>
+
+    <ul>
+        <li>
+            <ul>
+                <li>foo</li>
+                <li>kicked</li>
+                <li>bar</li>
+            </ul>
+        </li>
+    </ul>
+
+
+    <H1>actions_tag Output: </H1>
+
+    {% actions_tag 4 %} <! -- Can take an int avalue -->
+
+{% endblock %}
+
+

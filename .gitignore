@@ -1,0 +1,15 @@
+*.py[co]
+*~
+env/
+
+# setuptools stuff
+*.egg-info
+
+# IDE files
+/.idea
+/.ropeproject
+/*.iml
+*.sublime-project
+*.sublime-workspace
+
+trash
