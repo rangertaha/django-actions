@@ -11,6 +11,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
 # Import local libs
 from signals import action
 
@@ -104,4 +108,10 @@ class ActionModel(models.Model):
         return 'src:{0}, verb:{1}, target:{2}'.format(self.source, self.verb.name, self.target)
         
         
+        
+@receiver(post_save, sender=ActionModel)
+def create_action(sender, instance, created, **kwargs):
+    if created:
+        log.debug("Do something")
+
         
